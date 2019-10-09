@@ -56,8 +56,14 @@ class HouseTest < Minitest::Test
   @house.add_room(@room_2)
   @house.add_room(@room_3)
   @house.add_room(@room_4)
-  binding.pry
+  # binding.pry
   assert_equal [@room_1, @room_2], @house.rooms_from_category(:bedroom)
+  end
+
+  def test_it_has_an_area
+  # skip
+
+  assert_equal 1900, @house.area
   end
 
 
