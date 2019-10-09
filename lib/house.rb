@@ -8,7 +8,7 @@ class House
   end
 
   def add_room(room)
-    @rooms[] << room = Room.new(catagory, length, width)
+    @rooms << room
   end
 
 end
