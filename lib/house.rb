@@ -19,7 +19,6 @@ class House
         x << room
       end
     end
-    # binding.pry
     return x
   end
 
