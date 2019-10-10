@@ -21,12 +21,39 @@ class House
     end
   end
 
+
+# TRY THIS ==>> @rooms.sum(&:area)
   def area
-    area = 0
-    @rooms.each do |room|
-      area += room.area
+    @rooms.sum do |room|
+      room.area
     end
-    area
+  end
+
+  def price_per_square_foot
+    (price/area.to_f).round(2)
+  end
+
+  def rooms_sorted_by_area
+    @rooms.sort_by do |room|
+      room.area
+    end.reverse
+  end
+
+  def rooms_by_category
+
+    #SHORT HAND
+    # @rooms.group_by do |room|
+    #   room.category
+
+    rooms = {}
+    @rooms.each do |room|
+      if rooms[room.category]
+        rooms[room.category] << room
+      else
+        rooms[room.category] = [room]
+      end
+    end
+    rooms
   end
 
 end
