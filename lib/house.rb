@@ -1,11 +1,14 @@
 class House
-  attr_reader :price, :address, :rooms, :area
+  attr_reader :price, :address, :rooms
 
   def initialize(price, address)
     @price = price
     @address = address
     @rooms = []
-    @area = 1900
+  end
+
+  def price
+    @price.gsub("$", "").to_i
   end
 
   def add_room(room)
@@ -13,13 +16,17 @@ class House
   end
 
   def rooms_from_category(category)
-    x = []
-    @rooms.each do |room|
-      if category == room.category
-        x << room
-      end
+    @rooms.find_all do |room|
+      category == room.category
     end
-    return x
+  end
+
+  def area
+    area = 0
+    @rooms.each do |room|
+      area += room.area
+    end
+    area
   end
 
 end
